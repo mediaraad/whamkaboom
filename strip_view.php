@@ -32,5 +32,5 @@ echo "</table>";
 
 ?>
 
-</BODY>
-</HTML>
+</body>
+</html>

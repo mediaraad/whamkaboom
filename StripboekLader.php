@@ -61,11 +61,11 @@ class StripboekLader
             }
             $stringTekenaars="";
             for ($i=0;$i<=$aantalTekenaars-1;$i++) {				// echo de tekenaars die correleren met id
-                $statement = $pdo->prepare('SELECT tek_naam from tekenaar_tbl where tek_id= :id');
-                $statement->execute(array('id' => $tekenaar));
+                $statement = $pdo->prepare('SELECT tek_naam, tek_voornaam from tekenaar_tbl where tek_id= :id');
+                $statement->execute(array('id' => $tekenaars[$i]));
                 $arrayTekenaar = $statement->fetch(PDO::FETCH_ASSOC);
-                if ($aantalTekenaars>1) $stringTekenaars .= $arrayTekenaar['tek_naam'].", ";
-                else $stringTekenaars .= $arrayTekenaar['tek_naam'];
+                if ($aantalTekenaars>1) $stringTekenaars .= $arrayTekenaar['tek_voornaam']." ".$arrayTekenaar['tek_naam'].", ";
+                else $stringTekenaars .= $arrayTekenaar['tek_voornaam']." ".$arrayTekenaar['tek_naam'];
             }
         }
 
