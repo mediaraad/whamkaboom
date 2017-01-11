@@ -6,6 +6,7 @@ class Stripboek {
     private $title;
     private $jaaruitgave = 0;
     private $tekenaar;
+    private $deel;
     private $cbr ;
 
     public function getSpecs() {
@@ -17,6 +18,24 @@ class Stripboek {
                 $this->cbr
             );
         }
+
+    /**
+     * @return string
+     */
+    public function getDeel()
+    {
+        return $this->deel;
+    }
+
+    /**
+     * @param string $deel
+     */
+    public function setDeel($deel)
+    {
+        $this->deel = $deel;
+    }
+
+
 
     /**
      * @return string
