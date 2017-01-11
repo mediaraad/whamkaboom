@@ -64,7 +64,8 @@ class StripboekLader
                 $statement = $pdo->prepare('SELECT tek_naam from tekenaar_tbl where tek_id= :id');
                 $statement->execute(array('id' => $tekenaar));
                 $arrayTekenaar = $statement->fetch(PDO::FETCH_ASSOC);
-                $stringTekenaars .= $arrayTekenaar['tek_naam'].", ";
+                if ($aantalTekenaars>1) $stringTekenaars .= $arrayTekenaar['tek_naam'].", ";
+                else $stringTekenaars .= $arrayTekenaar['tek_naam'];
             }
         }
 

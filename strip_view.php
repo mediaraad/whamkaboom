@@ -16,8 +16,8 @@ echo "<a href=\"index.php\">home</a><p>";
 
 $container = new Container($configuration);
 $stripboekLader = $container->getStripboekLader();
+//$stripboeken = $container->getStripboekLader()->getStripboeken($held);
 $stripboeken = $stripboekLader->getStripboeken($held);
-
 
 echo $held . "*<br>";
 
