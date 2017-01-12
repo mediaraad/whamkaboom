@@ -2,6 +2,7 @@
 
 require_once __DIR__.'/Stripboek.php';
 require_once __DIR__.'/StripboekLader.php';
+require_once __DIR__.'/Tekenaar.php';
 require_once __DIR__.'/TekenaarLader.php';
 require_once __DIR__.'/Container.php';
 

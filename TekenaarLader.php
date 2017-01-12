@@ -3,11 +3,54 @@
 class TekenaarLader
 {
     private $pdo;
+    private $tekenaar;
+    private $lastName;
 
-    public function __construct(PDO $pdo)
+    public function __construct(PDO $pdo, $lastName = null)
     {
         $this->pdo = $pdo;
+        $this->lastName = $lastName;
     }
+
+
+    /**
+     * @return tekenaars[]
+     */
+    public function getTekenaars($tekenaar)
+    {
+        $tekenaarsData = $this->queryForTekenaars($tekenaar);
+        $tekenaars = array();
+        foreach ($tekenaarsData as $tekenaarData) {
+            $tekenaar = new Tekenaar();
+            $tekenaar->setId($tekenaarData['tek_id']);
+            $tekenaar->setAchterNaam($tekenaarData['tek_naam']);
+            $tekenaar->setVoorNaam($tekenaarData['tek_voornaam']);
+            $tekenaar->setAlias($tekenaarData['tek_alias']);
+            $tekenaar->setGeboorteDatum($tekenaarData['tek_geboortedatum']);
+            $tekenaar->setGeboorteLand($tekenaarData['tek_geboorteland']);
+            $tekenaar->setRol($tekenaarData['tek_activiteit']);
+            $tekenaar->setImage($tekenaarData['tek_image']);
+            $tekenaar->setOpmerking($tekenaarData['tek_opmerking']);
+
+            $tekenaars[] = $tekenaar;
+        }
+        //var_dump($tekenaars); die("help");
+        return $tekenaars;
+    }
+
+
+    private function queryForTekenaars($tekenaar ="") {
+        $pdo= $this->getPDO();
+        $statement = $pdo->prepare('SELECT * FROM tekenaar_tbl WHERE tek_naam LIKE :achternaam ORDER BY tek_naam');
+        if ($tekenaar=="") $naam="";
+        else $naam=$tekenaar."%";
+        $statement->bindParam(':achternaam',$naam, PDO::PARAM_STR);
+        $statement->execute();
+        $stripArray = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $stripArray;
+    }
+
 
     /**
      * @return PDO
