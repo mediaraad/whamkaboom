@@ -12,6 +12,22 @@ class TekenaarLader
         $this->lastName = $lastName;
     }
 
+    /**
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+    }
+
 
     /**
      * @return tekenaars[]
@@ -24,6 +40,7 @@ class TekenaarLader
             $tekenaar = new Tekenaar();
             $tekenaar->setId($tekenaarData['tek_id']);
             $tekenaar->setAchterNaam($tekenaarData['tek_naam']);
+            $this->setLastName($tekenaarData['tek_naam']);
             $tekenaar->setVoorNaam($tekenaarData['tek_voornaam']);
             $tekenaar->setAlias($tekenaarData['tek_alias']);
             $tekenaar->setGeboorteDatum($tekenaarData['tek_geboortedatum']);

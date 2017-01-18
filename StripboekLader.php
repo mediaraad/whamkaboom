@@ -6,8 +6,7 @@ class StripboekLader
     private $pdo;
     private $held;
 
-    public function __construct(PDO $pdo)
-    {
+    public function __construct(PDO $pdo) {
         $this->pdo = $pdo;
     }
 

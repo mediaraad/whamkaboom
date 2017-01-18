@@ -22,8 +22,11 @@ require __DIR__ . '/bootstrap.php';
     echo $zoek . "*<br>";
 
     echo "<table>";
+    echo "<tr><th>naam</th><th>voornaam</th><th>alias</th><th>geboren</th><th>land</th><th>rol</th><th>opmerking</th></tr>";
     foreach ($tekenaars as $teken) {
-        echo "<tr><td>".$teken->getAchterNaam() . "</td><td>" . $teken->getVoorNaam() ."</td><td width=100>". $teken->getAlias() ."</td><td>". $teken->getGeboorteDatum() ."</td><td>". $teken->getGeboorteLand() ."</td><td>". $teken->getRol() ."</td><td width=250>". $teken->getOpmerking() ."</td></tr>";
+        echo "<tr><td>".$teken->getAchterNaam() . "</td><td>" . $teken->getVoorNaam() ."</td><td width=100>". $teken->getAlias() ."</td><td>". $teken->getGeboorteDatum() ."</td><td>". $teken->getGeboorteLand() ."</td><td>". $teken->getRol() ."</td><td>";
+        if ($teken->getOpmerking()!="") echo "Er is een opmerking";
+        echo "</td></tr>";
     }
     echo "</table>";
     //var_dump($tekenen);
