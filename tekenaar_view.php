@@ -12,8 +12,9 @@ require __DIR__ . '/bootstrap.php';
 <body>
 <div id="container">
     <?php
+    include "menu.php";
+
     $zoek = isset($_POST['tekenaar']) ? $_POST['tekenaar'] : "";
-    echo "<a href=\"index.php\">home</a><p>";
 
     $container = new Container($configuration);
     $tekenaarLader = $container->getTekenaarLader();
@@ -26,7 +27,7 @@ require __DIR__ . '/bootstrap.php';
     foreach ($tekenaars as $teken) {
         echo "<tr><td>".$teken->getAchterNaam() . "</td><td>" . $teken->getVoorNaam() ."</td><td width=100>". $teken->getAlias() ."</td><td>". $teken->getGeboorteDatum() ."</td><td>". $teken->getGeboorteLand() ."</td><td>". $teken->getRol() ."</td><td>";
         if ($teken->getOpmerking()!="") echo "Er is een opmerking";
-        echo "</td></tr>";
+        echo "</td><td><a href='tekenaar_bewerk.php?id={$teken->getID()}'>bewerk</a></td><td>verwijder</td></tr>";
     }
     echo "</table>";
     //var_dump($tekenen);
