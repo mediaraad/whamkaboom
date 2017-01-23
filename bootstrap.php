@@ -5,7 +5,7 @@ require_once __DIR__.'/StripboekLader.php';
 require_once __DIR__.'/Container.php';
 
 $configuration = array(
-'db_dsn' => 'mysql:host=localhost;dbname=strip_db',
-'db_user' => 'root',
-'db_pass' => 'buhbuh'
+'db_dsn' => 'mysql:host=localhost;dbname=strips',
+'db_user' => 'whamkaboom',
+'db_pass' => 'okidoki'
 );
