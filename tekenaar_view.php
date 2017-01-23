@@ -19,7 +19,7 @@ require __DIR__ . '/bootstrap.php';
     $container = new Container($configuration);
     $tekenaarLader = $container->getTekenaarLader();
     $tekenaars = $tekenaarLader->getTekenaars($zoek);
-    //var_dump($tekenaars); die;
+
     echo $zoek . "*<br>";
 
     echo "<table>";
@@ -27,7 +27,7 @@ require __DIR__ . '/bootstrap.php';
     foreach ($tekenaars as $teken) {
         echo "<tr><td>".$teken->getAchterNaam() . "</td><td>" . $teken->getVoorNaam() ."</td><td width=100>". $teken->getAlias() ."</td><td>". $teken->getGeboorteDatum() ."</td><td>". $teken->getGeboorteLand() ."</td><td>". $teken->getRol() ."</td><td>";
         if ($teken->getOpmerking()!="") echo "Er is een opmerking";
-        echo "</td><td><a href='tekenaar_bewerk.php?id={$teken->getID()}'>bewerk</a></td><td>verwijder</td></tr>";
+        echo "</td><td><a href='tekenaar_bewerk.php?ID={$teken->getID()}'>bewerk</a></td><td>verwijder</td></tr>";
     }
     echo "</table>";
     //var_dump($tekenen);

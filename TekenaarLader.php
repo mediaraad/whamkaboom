@@ -5,6 +5,9 @@ class TekenaarLader
     private $pdo;
     //private $tekenaar;
     private $lastName;
+    const TYPE_TEKENAAR = "tekenaar";
+    const TYPE_SCHRIJVER = "schrijver";
+    const TYPE_BEIDE = "beiden";
 
     public function __construct(PDO $pdo, $lastName = null)
     {
@@ -32,40 +35,64 @@ class TekenaarLader
     /**
      * @return tekenaars[]
      */
-    public function getTekenaars($tekenaar)
+    public function getTekenaars($tekenaar,$id="")
     {
-        $tekenaarsData = $this->queryForTekenaars($tekenaar);
+        $tekenaarsData = $this->queryForTekenaars($tekenaar,$id);
+        $velden = $this->getVeldenTekenaar();
         $tekenaars = array();
+
         foreach ($tekenaarsData as $tekenaarData) {
             $teken = new Tekenaar();
-            $teken->setId($tekenaarData['tek_id']);
-            $teken->setAchterNaam($tekenaarData['tek_naam']);
-            $this->setLastName($tekenaarData['tek_naam']);
-            $teken->setVoorNaam($tekenaarData['tek_voornaam']);
-            $teken->setAlias($tekenaarData['tek_alias']);
-            $teken->setGeboorteDatum($tekenaarData['tek_geboortedatum']);
-            $teken->setGeboorteLand($tekenaarData['tek_geboorteland']);
-            $teken->setRol($tekenaarData['tek_activiteit']);
-            $teken->setImage($tekenaarData['tek_image']);
-            $teken->setOpmerking($tekenaarData['tek_opmerking']);
+            $teken->setId($tekenaarData[$velden[0]]);
+            $teken->setAchterNaam($tekenaarData[$velden[1]]);
+            $this->setLastName($tekenaarData[$velden[1]]);
+            $teken->setVoorNaam($tekenaarData[$velden[2]]);
+            $teken->setAlias($tekenaarData[$velden[3]]);
+            $teken->setGeboorteDatum($tekenaarData[$velden[4]]);
+            $teken->setGeboorteLand($tekenaarData[$velden[5]]);
+            $teken->setRol($tekenaarData[$velden[6]]);
+            $teken->setImage($tekenaarData[$velden[7]]);
+            $teken->setOpmerking($tekenaarData[$velden[8]]);
+
 
             $tekenaars[] = $teken;
         }
-        //var_dump($tekenaars); die("help");
+
         return $tekenaars;
     }
+
+    public function getVeldenTekenaar() {
+        $pdo= $this->getPDO();
+
+        $statement = $pdo->prepare('DESCRIBE tekenaar_tbl');
+        $statement->execute();
+        $veldenArray = $statement->fetchAll(PDO::FETCH_COLUMN);
+
+        //$object = (object) $veldenArray;
+
+        //var_dump($object);die;
+        return $veldenArray;
+    }
+
 
 
     /**
      * @param string $tekenaar
      * @return array
      */
-    private function queryForTekenaars($tekenaar ="") {
+    private function queryForTekenaars($tekenaar, $id) {
         $pdo= $this->getPDO();
-        $statement = $pdo->prepare('SELECT * FROM tekenaar_tbl WHERE tek_naam LIKE :achternaam ORDER BY tek_naam');
-        if ($tekenaar=="") $naam="";
-        else $naam=$tekenaar."%";
-        $statement->bindParam(':achternaam',$naam, PDO::PARAM_STR);
+        if ($id == null) {
+            $statement = $pdo->prepare('SELECT * FROM tekenaar_tbl WHERE tek_naam LIKE :achternaam ORDER BY tek_naam');
+            if ($tekenaar=="") $naam="";
+            else $naam=$tekenaar."%";
+            $statement->bindParam(':achternaam',$naam, PDO::PARAM_STR);
+        }
+        else {
+            $statement = $pdo->prepare('SELECT * FROM tekenaar_tbl WHERE tek_id = :id');
+            $statement->bindParam(':id',$id, PDO::PARAM_INT);
+        }
+
         $statement->execute();
         $stripArray = $statement->fetchAll(PDO::FETCH_ASSOC);
 
