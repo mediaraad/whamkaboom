@@ -5,6 +5,8 @@ class Container
     private $configuration;
     private $pdo;
     private $stripboekLader;
+    private $tekenaarLader;
+    private $veldenTekenaarLader;
 
     public function __construct(array $configuration)
     {
@@ -49,4 +51,27 @@ class Container
         }
         return $this->stripboekLader;
     }
+
+    /**
+     * @return TekenaarLader
+     */
+    public function getTekenaarLader()
+    {
+        if ($this->tekenaarLader === null) {
+            $this->tekenaarLader = new TekenaarLader($this->getPDO());
+        }
+        return $this->tekenaarLader;
+    }
+
+    /**
+     * @return veldenTekenaarTabel
+     */
+    public function getVeldenTekenaarTabel()
+    {
+        if ($this->veldenTekenaarTabel === null) {
+            $this->veldenTekenaarTabel = new VeldenTekenaarTabel($this->getPDO());
+        }
+        return $this->veldenTekenaarTabel;
+    }
+
 }

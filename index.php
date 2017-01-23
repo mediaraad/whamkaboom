@@ -7,7 +7,11 @@ require __DIR__ . '/bootstrap.php';
 
 <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <title>Whamkaboom</title>
+=======
+    <title>Strip collectie</title>
+>>>>>>> ffc3c2285b119acbb8ee37d7d285be350edee14a
     <link rel='stylesheet' href='style.css' type="text/css">
 </head>
 
@@ -16,10 +20,22 @@ require __DIR__ . '/bootstrap.php';
 
 
 <div id="container">
+<<<<<<< HEAD
     <h3>Stripcollectie special edition:</h3>
+=======
+    <?php
+    include "menu.php";
+    ?>
+
+    <h3>Stripcollectie:</h3>
+>>>>>>> ffc3c2285b119acbb8ee37d7d285be350edee14a
 
     <form action="strip_view.php" method="post"> Kies een held
         <input name="held"> <input class=home type="submit" value="ok" name=put>
+    </form>
+    <br>
+    <form action="tekenaar_view.php" method="post"> Kies een tekenaar
+        <input name="tekenaar"> <input class=home type="submit" value="ok" name=put>
     </form>
 </div>
 </body>

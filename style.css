@@ -1,6 +1,6 @@
 body, table td {
     font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
-    font-size: smaller;
+    font-size: small;
     text-align: center;
 }
 
@@ -18,3 +18,9 @@ td {
     border: solid 1px gray;
     text-align: left !important;
 }
+tr:hover {background-color: #FC3;}
+div#menu { font-family: "Lucida Grande", Helvetica, Arial, sans-serif; width:600px; height:34px; border: solid 1px #69002A; margin: 0 auto;}
+div#menu ul {list-style-type:none;margin:0;}
+div#menu li {float:left;margin:0;}
+div#menu a {display:block; padding:10px; font-weight:bold; border-right: 1px solid #69002A; text-decoration: none; color: gray;}
+div#menu a:hover {background:#69002A; color:#ffffff; font-weight:bold; display:block}
