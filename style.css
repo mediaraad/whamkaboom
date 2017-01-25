@@ -15,10 +15,11 @@ table {
 }
 
 td {
-    border: solid 1px gray;
+    border: solid 1px gray; padding: 1px;
     text-align: left !important;
 }
 tr:hover {background-color: #FC3;}
+/* hoofdmenu */
 div#menu { font-family: "Lucida Grande", Helvetica, Arial, sans-serif; width:600px; height:34px; border: solid 1px #69002A; margin: 0 auto;}
 div#menu ul {list-style-type:none;margin:0;}
 div#menu li {float:left;margin:0;}

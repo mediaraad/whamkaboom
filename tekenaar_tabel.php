@@ -97,7 +97,7 @@ foreach ($tekenaars as $teken) {
     if ($teken->getOpmerking()!="") echo "<td>Er is een opmerking</td>";
     else echo "<td></td>";
 
-    echo ("<td VALIGN=TOP class=$tmp><a href=\"tekenaar_bewerk.php?ID={$teken->getId()}\">bewerk</a>/<a href=\"tekenaar_delete.php?ID=$Row[tek_id]&letter=$letter\">verwijder</a></td>\n");
+    echo ("<td VALIGN=TOP><a href=\"tekenaar_bewerk.php?ID={$teken->getId()}\">bewerk</a>/<a href=\"tekenaar_delete.php?ID=\">verwijder</a></td>\n");
 
 
     echo "</tr>";

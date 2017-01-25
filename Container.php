@@ -6,7 +6,7 @@ class Container
     private $pdo;
     private $stripboekLader;
     private $tekenaarLader;
-    private $veldenTekenaarLader;
+    private $veldenTekenaarTabel;
 
     public function __construct(array $configuration)
     {
@@ -25,7 +25,7 @@ class Container
                 $this->configuration['db_user'],
                 $this->configuration['db_pass'],
                 array(
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,        //set the error mode to "Exceptions"
                     PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"
                 )
             );

@@ -22,9 +22,21 @@ class VeldenTekenaarTabel {
 
 
         return $veldenArray;
-
-
     }
+
+    // used for paging products
+    public function countVeldenTekenaar(){
+
+        $query = "SELECT id FROM " . $this->table_name . "";
+
+        $stmt = $this->conn->prepare( $query );
+        $stmt->execute();
+
+        $num = $stmt->rowCount();
+
+        return $num;
+    }
+
 
     private function getPDO()
     {
