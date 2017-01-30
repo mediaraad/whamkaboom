@@ -54,7 +54,11 @@ require __DIR__ . '/bootstrap.php';
 
         });
 
+        function confirmDelete(entry){
+            return confirm("Weet u zeker dat u * " + entry + " * wilt verwijderen?");
+        }
     </script>
+
 </head>
 <body>
 <?php
@@ -97,7 +101,7 @@ foreach ($tekenaars as $teken) {
     if ($teken->getOpmerking()!="") echo "<td>Er is een opmerking</td>";
     else echo "<td></td>";
 
-    echo ("<td VALIGN=TOP><a href=\"tekenaar_bewerk.php?ID={$teken->getId()}\">bewerk</a>/<a href=\"tekenaar_delete.php?ID=\">verwijder</a></td>\n");
+    echo ("<td VALIGN=TOP><a href=\"tekenaar_bewerk.php?ID={$teken->getId()}\">bewerk</a>/<a onClick=\"return confirmDelete('{$teken->getAchterNaam()}');\" href=\"tekenaar_verwijder.php?id={$teken->getId()}\">verwijder</a></td>\n");
 
 
     echo "</tr>";
