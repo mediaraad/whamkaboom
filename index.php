@@ -25,6 +25,14 @@ require __DIR__ . '/bootstrap.php';
 
     <?php
     include "menu.php";
+
+    $password="12345";
+    $hash= password_hash($password,PASSWORD_DEFAULT);
+    echo $hash;
+
+    $test=password_verify($password,$hash);
+    echo "<br>".$test;
+
     ?>
 
     <h3>Stripcollectie:</h3>

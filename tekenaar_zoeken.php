@@ -23,7 +23,7 @@
     </form>
 
 <p><a href="tekenaar_tabel.php">Tekenaarstabel</a> </p>
-
+<p><a href="tekenaar_bewerk.php">Tekenaar toevoegen</a> </p>
 </div>
 </body>
 </html>

@@ -29,7 +29,7 @@ class StripboekLader
 
             $stripboeken[] = $stripboek;
         }
-        //var_dump($stripboeken); die;
+
         return $stripboeken;
     }
 
@@ -40,7 +40,7 @@ class StripboekLader
         else $naam=$held."%";
         $statement->bindParam(':held',$naam, PDO::PARAM_STR);
         $statement->execute();
-        $stripArray = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $stripArray = $statement->fetchAll(PDO::FETCH_ASSOC); // FETCH_ASSOC, FETCH_CLASS, FETCH_OBJ
 
         return $stripArray;
     }

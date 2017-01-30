@@ -5,9 +5,9 @@ class TekenaarLader
     private $pdo;
     //private $tekenaar;
     private $lastName;
-    const TYPE_TEKENAAR = "tekenaar";
-    const TYPE_SCHRIJVER = "schrijver";
-    const TYPE_BEIDE = "beiden";
+    const TYPE_TEKENAAR = 1;
+    const TYPE_SCHRIJVER = 2;
+    const TYPE_BEIDE = 3;
 
     public function __construct(PDO $pdo, $lastName = null)
     {
@@ -89,7 +89,7 @@ class TekenaarLader
             $statement->bindParam(':achternaam',$naam, PDO::PARAM_STR);
         }
         else {
-            $statement = $pdo->prepare('SELECT * FROM tekenaar_tbl WHERE tek_id = :id');
+            $statement = $pdo->prepare('SELECT * FROM tekenaar_tbl WHERE tek_id = :id limit 0,1');
             $statement->bindParam(':id',$id, PDO::PARAM_INT);
         }
 
@@ -127,10 +127,14 @@ class TekenaarLader
         $pdo = $this->getPDO();
         try
         {
+            // variabelen checken
+            if ($datum=="") $datum="0000-00-00";
+
             if ($id=='') {
                 $stmt = $pdo->prepare("INSERT INTO tekenaar_tbl (tek_naam,tek_voornaam,tek_alias,tek_geboortedatum,tek_geboorteland,tek_activiteit,tek_image,tek_opmerking) VALUES(:naam, :voornaam, :alias, :datum, :land, :rol, :image, :opmerking)");
             }
             else {
+
                 $stmt=$pdo->prepare("UPDATE tekenaar_tbl SET
                     tek_naam=:naam,
                     tek_voornaam=:voornaam,
@@ -139,16 +143,16 @@ class TekenaarLader
                     tek_geboorteland=:land,
                     tek_activiteit=:rol,
                     tek_image=:image,
-                    tek_opmerking=:opmerking WHERE id=:id ");
+                    tek_opmerking=:opmerking WHERE tek_id=:id ");
                 $stmt->bindparam(":id",$id);
             }
 
-            $stmt->bindparam(":naam",$naam);
+            $stmt->bindparam(":naam",$naam, PDO::PARAM_STR);
             $stmt->bindparam(":voornaam",$voornaam);
             $stmt->bindparam(":alias",$alias);
-            $stmt->bindparam(":datum",$datum);
+            $stmt->bindparam(":datum",$datum,strtotime (date ("Y-m-d")), PDO::PARAM_STR);
             $stmt->bindparam(":land",$land);
-            $stmt->bindparam(":rol",$rol);
+            $stmt->bindparam(":rol",$rol, PDO::PARAM_INT);
             $stmt->bindparam(":image",$image);
             $stmt->bindparam(":opmerking",$opmerking);
             $stmt->execute();
