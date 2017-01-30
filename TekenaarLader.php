@@ -175,7 +175,7 @@ class TekenaarLader
     public function deleteTekenaar($id)
     {
         $pdo = $this->getPDO();
-        $stmt = $pdo->prepare("DELETE FROM tekenaar_tbl WHERE id=:id");
+        $stmt = $pdo->prepare("DELETE FROM tekenaar_tbl WHERE tek_id=:id");
         $stmt->bindparam(":id",$id);
         $stmt->execute();
         return true;

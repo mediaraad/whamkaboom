@@ -18,6 +18,7 @@ td {
     border: solid 1px gray; padding: 1px;
     text-align: left !important;
 }
+td.vet {font-weight: bold;}
 tr:hover {background-color: #FC3;}
 /* hoofdmenu */
 div#menu { font-family: "Lucida Grande", Helvetica, Arial, sans-serif; width:600px; height:34px; border: solid 1px #69002A; margin: 0 auto;}
