@@ -1,5 +1,5 @@
 <?php
-
+// test
 class Stripboek {
     private $id;
     private $held;
