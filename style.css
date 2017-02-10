@@ -15,7 +15,7 @@ table {
 }
 
 td {
-    border: solid 1px gray; padding: 1px;
+    border: solid 1px gray; padding: 3px;
     text-align: left !important;
 }
 td.vet {font-weight: bold;}

@@ -3,7 +3,6 @@ class UserLogin
 {
     private $id;
     private $user;
-    private $pass;
     private $salt;
     private $hash;
     private $error = false;
@@ -27,6 +26,7 @@ class UserLogin
     function getError()
     {
         return $this->error;
+        
     }
 
 
