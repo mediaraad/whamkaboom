@@ -1,6 +1,8 @@
 <?php
 require __DIR__ . '/bootstrap.php';
-
+session_start();
+include "functions.php";
+include "validate.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,6 +47,8 @@ echo "<p>".$hash;
 $test=password_verify($password,$hash);
 echo "<br>".$test;
 
+
+echo "<br>".$_COOKIE['eenkoekie'];
 ?>
 
 </body>
