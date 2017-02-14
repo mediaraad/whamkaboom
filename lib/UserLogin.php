@@ -1,29 +1,106 @@
 <?php
 class UserLogin
 {
+    private $pdo;
     private $id;
-    private $user;
+    private $userName;
     private $salt;
     private $hash;
+    private $role;
+
     private $error = false;
 
     protected $mysqli;
+    protected $namen;
 
-    public function __construct()
+    public function __construct(PDO $pdo)
     {
-        $this->mysqli = mysqliSingleton::init();
+        $this->pdo = $pdo;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNamen()
+    {
+        $this->namen= array("hub","buhbuh","gast","g_2009");
+        return $this->namen;
+    }
+
+
+    public function userValidLogin ( $login, $password ) {
+        $namen=$this->getNamen();
+        $aantal=count($namen);
+        $ret = false;
+        //sql statement mogelijk
+
+        if ($login=='' or $password=='') {
+            $ret=false;
+            $this->setError("Fout: Toegang geweigerd") ;
+        }
+
+        else {
+            for ($i=0;$i<=$aantal;$i=$i+2) {
+                if (isset($namen[$i]) && $login==$namen[$i]) {
+                    if ($password==$namen[$i+1]) {
+                        $ret=true;
+                        $this->setError("OK");
+                    }
+                    else {
+                        $ret=false;
+                        $this->setError("Fout: Toegang geweigerd");
+                    }
+                }
+            }
+        }
+    // sql afhandeling
+        return $ret;
+    }
+
+    public function userValidCrypt ( $login, $crypt_password ) { //nodig bij index.php
+        $namen=$this->getNamen();
+        $aantal=count($namen);
+        $ret = false;
+
+        $salt = substr($crypt_password, 0, 2);
+        //sql statement mogelijk
+        $res=false;
+        for ($i=0;$i<=$aantal;$i=$i+2) {
+            if (isset($namen[$i]) && $login==$namen[$i]) {
+                $j=$i+1;
+                $password=$namen[$j];
+                $res=true;
+                //echo "gevonden ID/PW: $login $password<br>";
+            }
+            //echo "$namen[$i] - $namen[$j]<br>";
+        }
+        if ( $res ) {
+            //echo "RES routine<br>";
+            if ( crypt($password, $salt) == $crypt_password ) {
+                $ret = true; // found login/password
+//		echo "Goed";
+            }
+// sql afhandeling
+            else $this->setError("Geen toegang");
+        }
+        else {
+            $this->setError("Geen toegang");
+        }
+        return $ret;
     }
 
 
 
-    function setError($val)
+
+
+    private function setError($val)
     {
         $this->error = $val;
     }
 
 
 
-    function getError()
+    private function getError()
     {
         return $this->error;
         
@@ -31,9 +108,9 @@ class UserLogin
 
 
 
-    public function userLogin($user, $pass)
+    public function userLogin($userName, $pass)
     {
-        if($this->checkUser($user) && $this->checkPass($pass))
+        if($this->checkUser($userName) && $this->checkPass($pass))
         {
             //$_SESSION['memberID']   = $this->id;
             $_SESSION['memberName'] = $this->user;
@@ -47,22 +124,22 @@ class UserLogin
 
 
 
-    public function checkUser($user)
+    public function checkUser($userName)
     {
         $stmt = $this->mysqli->prepare("SELECT memberID, userName, salt, hash FROM members WHERE userName = ? LIMIT 1");
 
-        $stmt->bind_param("s",$user);
+        $stmt->bind_param("s",$userName);
         $stmt->execute();
         $stmt->bind_result($this->id, $this->user, $this->salt, $this->hash);
 
         //
-        if (null === ($userData = $stmt->fetch_assoc()))
+        if (null === ($userNameData = $stmt->fetch_assoc()))
         {
             return false;
         }
-        $this->user = $userData['userName'];
-        $this->user = $userData['salt'];
-        $this->user = $userData['hash'];
+        $this->user = $userNameData['userName'];
+        $this->user = $userNameData['salt'];
+        $this->user = $userNameData['hash'];
         return true;
     }
 
@@ -74,22 +151,3 @@ class UserLogin
     }
 }
 
-
-/* Form
-
-if($_SERVER['REQUEST_METHOD'] == 'POST')
-    {
-        $user       = $_POST['username'];
-        $pass       = $_POST['password'];
-
-            if($login->userLogin($user, $pass))
-            {
-                echo "Successfully logged in!";
-            }
-            else {
-                echo $login->getError();
-            }
-    }
-
- * *
- */

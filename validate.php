@@ -2,6 +2,9 @@
 $sessionNotFound = false;
 $eenkoekie = $_COOKIE['eenkoekie'];
 
+$container= new Container($configuration);
+$user= $container->getUserLogin();
+
 if ( empty ($eenkoekie) && empty ($login) ) {
     $sessionNotFound = true;
     }
@@ -17,10 +20,9 @@ else {  // Check for cookie...
             if (!isset($login_pw[1])) $login_pw[1]= null;
             $cryptpw = $login_pw[1];
             // make sure we are connected to the database for password check
-            if (user_valid_crypt($login, $cryptpw)) {
+            if ($user->userValidCrypt($login, $cryptpw)) {
                 //do_debug ( "User not logged in; redirecting to login page" );
                 Header ("Location:login.php" );
-                //echo "sdsd";
 
             }
             //else echo " ga verder $login $cryptpw ";

@@ -1,39 +1,33 @@
 <?php
+require __DIR__ . '/bootstrap.php';
 include "functions.php";
 
 $login=isset($_POST['login'])? $_POST['login']:"";
 $password=isset($_POST['password'])? $_POST['password']:"";
 $herinner =isset($_COOKIE['herinner'])?  $_COOKIE['herinner']:"";
-if ( !empty($herinner) && empty ($login) ) {
-    $last_login = $login = $herinner;
-}
-$remember='yes';
+
+if ( !empty($herinner) && empty ($login) )  $last_login = $login = $herinner;
 if ( !empty ($last_login) ) $login = "";
 
-// calculate path for cookie
-//$ptr = strstr ( $_SERVER['PHP_SELF'], "login.php" );
 $cookie_path = "/";
-
-    print($login." ".$password."]".$_COOKIE['herinner']);
+$container= new Container($configuration);
+$user= $container->getUserLogin();
+    print($login."[".$password."]".$herinner);
     if ( ! empty ( $login ) && ! empty ( $password ) ) {
-        if ( user_valid_login ( $login, $password ) ) { // in functions.php
-            // user_load_variables ( $login, "" ); // in functions.php
-            // set login to expire in 365 days
+        if ( $user->userValidLogin ( $login, $password ) ) { // in functions.php
             srand((double) microtime() * 1000000);
             $salt = chr( rand(ord('A'), ord('z'))) . chr( rand(ord('A'), ord('z')));
             $encoded_login = encode_string ( $login . "|" . crypt($password, $salt) ); // in functions.php
-            if ( $remember == "yes" ) SetCookie ( "eenkoekie", $encoded_login,time() + ( 12 * 3600 * 1 ), $cookie_path );
-            else SetCookie ( "eenkoekie", $encoded_login, 0, $cookie_path );
-            if ( $remember == "yes" ) SetCookie ( "herinner", $login,time() + ( 24 * 3600 * 120), $cookie_path );
-            else SetCookie ( "herinner", $login, 0, $cookie_path );
-            echo "hallo";
+            SetCookie ( "eenkoekie", $encoded_login,time() + ( 12 * 3600 * 1 ), $cookie_path );
+            SetCookie ( "herinner", $login,time() + ( 24 * 3600 * 120), $cookie_path );
+
             Header ("Location:index.php" );
-            //echo $encoded_login;
+
         }
-        else $error="Verkeerde combinatie";
+        else $error="Fout.";
 
     }
-    else print "HH";
+    //else print "HH";
 
 
 ?>
@@ -70,9 +64,6 @@ Graag inloggen:<P>
     ww: <input class="home" name="password" type="password" tabindex="2"> <input TYPE="hidden" name="remember" value="yes" > <input class="home" type="submit" value="Login" tabindex="3"><br>
 </form>
 
-<?php
-if (isset($_COOKIE['eenkoekie'])) echo "<br>".$_COOKIE['eenkoekie'];
-?>
 
 </body>
 </html>
