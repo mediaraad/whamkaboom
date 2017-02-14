@@ -103,7 +103,7 @@ class TekenaarLader
     /**
      * @return PDO
      */
-    public function getPdo()
+    public function getPDO()
     {
         return $this->pdo;
     }

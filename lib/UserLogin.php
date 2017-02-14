@@ -2,7 +2,6 @@
 class UserLogin
 {
     private $pdo;
-    private $id;
     private $userName;
     private $salt;
     private $hash;
@@ -124,30 +123,49 @@ class UserLogin
 
 
 
-    public function checkUser($userName)
+    public function checkUser($userName,$password)
     {
-        $stmt = $this->mysqli->prepare("SELECT memberID, userName, salt, hash FROM members WHERE userName = ? LIMIT 1");
-
-        $stmt->bind_param("s",$userName);
-        $stmt->execute();
-        $stmt->bind_result($this->id, $this->user, $this->salt, $this->hash);
-
-        //
-        if (null === ($userNameData = $stmt->fetch_assoc()))
-        {
-            return false;
+        $pdo= $this->getPDO();
+        $statement = $pdo->prepare('SELECT * FROM users_tbl WHERE user_name = :username limit 0,1');
+        $statement->bindParam(':username',$userName, PDO::PARAM_STR);
+        $statement->execute();
+        $userArray = $statement->fetch(PDO::FETCH_ASSOC);
+        $user=$userArray['user_name'];
+        $goIn = false;
+        if (!($user===null)) {
+            $hash=$userArray['user_hash'];
+            if (password_verify($password,$hash)) $goIn = true;
         }
-        $this->user = $userNameData['userName'];
-        $this->user = $userNameData['salt'];
-        $this->user = $userNameData['hash'];
-        return true;
+        return $goIn;
     }
 
+    public function queryForUser($userName){
+        $pdo= $this->getPDO();
+        $statement = $pdo->prepare('SELECT * FROM users_tbl WHERE user_name = :username limit 0,1');
+        $statement->bindParam(':username',$userName, PDO::PARAM_STR);
 
+        $statement->execute();
+        $userArray = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        return $userArray;
+    }
 
     public function checkPass($password)
     {
         return (hash_hmac("sha256", $password, $this->salt) === $this->hash);
     }
+
+
+    /**
+     * @return PDO
+     */
+    public function getPDO()
+    {
+        return $this->pdo;
+    }
+
+
+
+
 }
 

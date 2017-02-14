@@ -1,26 +1,26 @@
 <?php
-$sessionNotFound = false;
-$eenkoekie = $_COOKIE['eenkoekie'];
+session_start();
+$sessionFound = session_id();
 
-$container= new Container($configuration);
-$user= $container->getUserLogin();
+//$container= new Container($configuration);
+//$user= $container->getUserLogin();
 
-if ( empty ($eenkoekie) && empty ($login) ) {
-    $sessionNotFound = true;
+if($_SESSION['ingelogd']==false || ($_SESSION['ingelogd']=='')) {
+    // sessie verlopen!
+    session_unset();
+    session_destroy();
+    header('location: login.php');
     }
-else {  // Check for cookie...
-    if ( ! empty ( $eenkoekie) ) {
-        $encoded_login = $eenkoekie;
-        if ( empty ( $encoded_login ) ) {  // invalid session cookie
-            $sessionNotFound = true;
-        }
-        else {
-            $login_pw = explode('\|', decode_string ($encoded_login)); //in functions.php
-            $login = $login_pw[0];
-            if (!isset($login_pw[1])) $login_pw[1]= null;
-            $cryptpw = $login_pw[1];
-            // make sure we are connected to the database for password check
-            if ($user->userValidCrypt($login, $cryptpw)) {
+
+if ($_SESSION['ingelogd']==true && $_SESSION['session']!=$sessionFound) {
+    session_unset();
+    session_destroy();
+    header('location: login.php');
+
+}
+
+/*
+          if ($user->userValidCrypt($login, $cryptpw)) {
                 //do_debug ( "User not logged in; redirecting to login page" );
                 Header ("Location:login.php" );
 
@@ -33,7 +33,4 @@ else {  // Check for cookie...
 if ($sessionNotFound) {
     Header ("Location:login.php" );
     exit;
-}
-
-
-?>
+}*/
