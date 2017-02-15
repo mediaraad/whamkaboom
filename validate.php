@@ -19,18 +19,6 @@ if ($_SESSION['ingelogd']==true && $_SESSION['session']!=$sessionFound) {
 
 }
 
-/*
+/* Extra check up user ???
           if ($user->userValidCrypt($login, $cryptpw)) {
-                //do_debug ( "User not logged in; redirecting to login page" );
-                Header ("Location:login.php" );
-
-            }
-            //else echo " ga verder $login $cryptpw ";
-        } // einde if
-    } // einde else
-} // einde else
-
-if ($sessionNotFound) {
-    Header ("Location:login.php" );
-    exit;
-}*/
+*/

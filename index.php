@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/bootstrap.php';
 include "validate.php";
+require __DIR__ . '/bootstrap.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,7 +46,7 @@ $test=password_verify($password,$hash);
 echo "<br>".$test;
 
 
-echo "<br>".$_SESSION['session'];
+echo "<br>[".$_SESSION['session']."] ".$_SESSION['user'];
 ?>
 
 </body>

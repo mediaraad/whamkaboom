@@ -1,7 +1,7 @@
 <?php
+session_start();
 require __DIR__ . '/bootstrap.php';
 
-session_start();
 
 $login=isset($_POST['login'])? $_POST['login']:"";
 $password=isset($_POST['password'])? $_POST['password']:"";
@@ -14,8 +14,10 @@ $container= new Container($configuration);
 $user= $container->getUserLogin();
 
     if ( ! empty ( $login ) && ! empty ( $password ) ) {
-        if ( $user->checkUser ( $login, $password ) ) {
+        if ( $user->checkUser($login, $password) ) {
+
             $_SESSION['session']=session_id();
+            $_SESSION['user'] = $login;
             $_SESSION['ingelogd']=true;
             Header ("Location:index.php" );
 
