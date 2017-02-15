@@ -11,7 +11,7 @@ if($_SESSION['ingelogd']==false || ($_SESSION['ingelogd']=='')) {
     session_destroy();
     header('location: login.php');
     }
-
+/* user toevoer */
 if ($_SESSION['ingelogd']==true && $_SESSION['session']!=$sessionFound) {
     session_unset();
     session_destroy();
