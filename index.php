@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/bootstrap.php';
+include "validate.php";
 
 ?>
 <!DOCTYPE html>
@@ -40,11 +41,14 @@ require __DIR__ . '/bootstrap.php';
 
 $password="12345";
 $hash= password_hash($password,PASSWORD_DEFAULT);
-echo "<p>".$hash;
+echo "<p>hash: ".$hash;
 
 $test=password_verify($password,$hash);
-echo "<br>".$test;
+echo "<br>password_verivy: ".$test;
 
+
+//echo "<br>session/user".$_SESSION['session']." / ".$_SESSION['user'];
+echo " <br>Cookie[eenkoekie]: ".$_COOKIE['eenkoekie'];
 ?>
 
 </body>

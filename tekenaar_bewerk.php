@@ -3,18 +3,12 @@ require __DIR__ . '/bootstrap.php';
 
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <title>Wijzig tekenaar/schrijver</title>
     <link rel='stylesheet' href='style.css'>
-    <style>
-        <!--
-        table {border-collapse: collapse; border: solid 1px #881f44;}
-        td {padding:3px;}
-        -->
-    </style>
 </head>
 <body>
 <?php

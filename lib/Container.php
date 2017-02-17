@@ -7,6 +7,7 @@ class Container
     private $stripboekLader;
     private $tekenaarLader;
     private $veldenTekenaarTabel;
+    private $userLogin;
 
     public function __construct(array $configuration)
     {
@@ -72,6 +73,17 @@ class Container
             $this->veldenTekenaarTabel = new VeldenTekenaarTabel($this->getPDO());
         }
         return $this->veldenTekenaarTabel;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUserLogin()
+    {
+        if ($this->userLogin === null) {
+            $this->userLogin = new UserLogin($this->getPDO());
+        }
+        return $this->userLogin;
     }
 
 }

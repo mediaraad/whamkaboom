@@ -8,7 +8,7 @@ require_once __DIR__.'/Container.php';
 */
 
 spl_autoload_register(function($className) {
-    $path = __DIR__.'/'.$className.'.php';
+    $path = __DIR__.'/lib/'.$className.'.php';
     if (file_exists($path)) {
         require $path;
     }
