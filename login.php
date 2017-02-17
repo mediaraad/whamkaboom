@@ -13,12 +13,16 @@ if ( !empty ($last_login) ) $login = "";
 $container= new Container($configuration);
 $user= $container->getUserLogin();
 
+
     if ( ! empty ( $login ) && ! empty ( $password ) ) {
         if ( $user->checkUser($login, $password) ) {
 
-            $_SESSION['session']=session_id();
-            $_SESSION['user'] = $login;
+            $ipAddress = $_SERVER['REMOTE_ADDR'];
+            $hash= password_hash($ipAddress,PASSWORD_DEFAULT);
+            SetCookie ( "eenkoekie", $hash,time() + ( 12 * 3600 * 1 ), "/" );
+            SetCookie ( "herinner", $login,time() + ( 24 * 3600 * 120), "/" );
             $_SESSION['ingelogd']=true;
+            //var_dump($encoded_login);die;
             Header ("Location:index.php" );
 
         }
@@ -61,9 +65,9 @@ Graag inloggen:<P>
     id: <input class="home" name="login"  value="<?php if ( isset ( $last_login ) ) echo $last_login;?>" tabindex="1">
     ww: <input class="home" name="password" type="password" tabindex="2"> <input TYPE="hidden" name="remember" value="yes" > <input class="home" type="submit" value="Login" tabindex="3"><br>
 </form>
-
 <?php
-echo $_SESSION['session'];
+echo " <br>Cookie[eenkoekie]: ".$_COOKIE['eenkoekie'];
+
 ?>
 </body>
 </html>

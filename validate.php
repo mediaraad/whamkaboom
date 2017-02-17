@@ -1,23 +1,41 @@
 <?php
+session_set_cookie_params(3600,"/");
 session_start();
-$sessionFound = session_id();
+$eenkoekie = $_COOKIE['eenkoekie'];
 
-//$container= new Container($configuration);
-//$user= $container->getUserLogin();
+$container= new Container($configuration);
+$user= $container->getUserLogin();
 
 if($_SESSION['ingelogd']==false || ($_SESSION['ingelogd']=='')) {
-    // sessie verlopen!
     session_unset();
     session_destroy();
     header('location: login.php');
     }
-/* user toevoer */
-if ($_SESSION['ingelogd']==true && $_SESSION['session']!=$sessionFound) {
+
+$ipAddress = $_SERVER['REMOTE_ADDR'];
+if (!password_verify($ipAddress,$eenkoekie)) {
     session_unset();
     session_destroy();
     header('location: login.php');
-
 }
+/*
+ * http://stackoverflow.com/questions/6360093/how-to-set-lifetime-of-session
+ *
+//On login
+setcookie('sessid', $sessionid, 604800);      // One week or seven days
+setcookie('sesshash', $sessionhash, 604800);  // One week or seven days
+// And save the session data:
+saveSessionData($sessionid, $sessionhash, serialize($_SESSION)); // saveSessionData is your function
+
+
+user return
+if (isset($_COOKIE['sessid'])) {
+    if (valide_session($_COOKIE['sessid'], $_COOKIE['sesshash'])) {
+        $_SESSION = unserialize(get_session_data($_COOKIE['sessid']));
+    } else {
+        // Dont validate the hash, possible session falsification
+    }
+}*/
 
 /* Extra check up user ???
           if ($user->userValidCrypt($login, $cryptpw)) {
