@@ -36,19 +36,28 @@ require __DIR__ . '/bootstrap.php';
                     "sInfoPostFix":  "",
                     "sSearch":       "Zoek:",
                     "sUrl":          "",
+/*
+
+                    "bProcessing": true,
+                    "bServerSide": true,
+                    "sAjaxSource": "ajax.php",
+                    "sPaginationType": "full_numbers",
+                    "sServerMethod": "POST",
+*/
+
                     "oPaginate": {
                         "sFirst":    "Eerste",
                         "sPrevious": "Vorige",
                         "sNext":     "Volgende",
                         "sLast":     "Laatste"}
-                },
-                "iDisplayLength": 40,
-                "bJQueryUI": true,
-                "sPaginationType": "full_numbers",
-                "aoColumnDefs": [
-                    {"bSortable": false, "aTargets": [0,3,4,5,7,8,9]},
-                    {"bVisible": false, "aTargets": []}
-                ],
+                    },
+                    "iDisplayLength": 40,
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "aoColumnDefs": [
+                        {"bSortable": false, "aTargets": [0,3,4,5,7,8,9]},
+                        {"bVisible": false, "aTargets": []}
+                    ],
                 "aaSorting" : [[1,"asc"]]
             });
 

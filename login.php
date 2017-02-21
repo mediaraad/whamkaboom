@@ -1,5 +1,25 @@
 <?php
+//ini_set('session.gc_maxlifetime', 3600);  // server should keep session data for AT LEAST 1 hour
+//session_set_cookie_params(3600, "/");     // each client should remember their session id for EXACTLY 1 hour
+
+# Session lifetime of 3 hours
+ini_set('session.gc_maxlifetime',10800);
+
+# Enable session garbage collection with a 1% chance of
+# running on each session_start()
+ini_set('session.gc_probability',1);
+ini_set('session.gc_divisor',100);
+
+# Our own session save path; it must be outside the
+# default system save path so Debian's cron job doesn't
+# try to clean it up. The web server daemon must have
+# read/write permissions to this directory.
+//session_save_path( '/var/www/session'); // werkt niet!
+//ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/session'));
+ini_set('session.save_path','/var/www/session');
+
 session_start();
+
 require __DIR__ . '/bootstrap.php';
 
 
@@ -66,8 +86,13 @@ Graag inloggen:<P>
     ww: <input class="home" name="password" type="password" tabindex="2"> <input TYPE="hidden" name="remember" value="yes" > <input class="home" type="submit" value="Login" tabindex="3"><br>
 </form>
 <?php
-echo " <br>Cookie[eenkoekie]: ".$_COOKIE['eenkoekie'];
 
+echo "<p><strong>sessies</strong><br>";
+echo " <br>session_id(): ".session_id();
+
+var_dump($_SESSION);
+echo "</p><p><strong>cookies</strong>";
+var_dump($_COOKIE);
 ?>
 </body>
 </html>

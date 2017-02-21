@@ -8,21 +8,14 @@ include "validate.php";
 
 <head>
     <meta charset="utf-8">
-
     <title>Strip collectie</title>
-
     <link rel='stylesheet' href='style.css' type="text/css">
 </head>
 
 <body>
-
-
-
 <div id="container">
-
     <?php
     include "menu.php";
-
     ?>
 
     <h3>Stripcollectie:</h3>
@@ -42,13 +35,15 @@ include "validate.php";
 $password="12345";
 $hash= password_hash($password,PASSWORD_DEFAULT);
 echo "<p>hash: ".$hash;
-
 $test=password_verify($password,$hash);
-echo "<br>password_verivy: ".$test;
+echo "<br>password_verify: ".$test;
 
+echo "<p><strong>sessies</strong><br>";
+echo " <br>session_id(): ".session_id();
 
-//echo "<br>session/user".$_SESSION['session']." / ".$_SESSION['user'];
-echo " <br>Cookie[eenkoekie]: ".$_COOKIE['eenkoekie'];
+var_dump($_SESSION);
+echo "</p><p><strong>cookies</strong>";
+var_dump($_COOKIE);
 ?>
 
 </body>

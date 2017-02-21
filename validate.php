@@ -1,5 +1,12 @@
 <?php
-session_set_cookie_params(3600,"/");
+/* Session lifetime of 3 hours
+ * http://stackoverflow.com/questions/5238136/increase-php-session-time
+ */
+ini_set('session.gc_maxlifetime',10800);
+ini_set('session.gc_probability',1);
+ini_set('session.gc_divisor',100);
+ini_set('session.save_path','/var/www/session');
+
 session_start();
 $eenkoekie = $_COOKIE['eenkoekie'];
 
@@ -18,6 +25,7 @@ if (!password_verify($ipAddress,$eenkoekie)) {
     session_destroy();
     header('location: login.php');
 }
+
 /*
  * http://stackoverflow.com/questions/6360093/how-to-set-lifetime-of-session
  *
