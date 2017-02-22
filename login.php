@@ -34,22 +34,22 @@ $container= new Container($configuration);
 $user= $container->getUserLogin();
 
 
-    if ( ! empty ( $login ) && ! empty ( $password ) ) {
-        if ( $user->checkUser($login, $password) ) {
+if ( ! empty ( $login ) && ! empty ( $password ) ) {
+    if ( $user->checkUser($login, $password) ) {
 
-            $ipAddress = $_SERVER['REMOTE_ADDR'];
-            $hash= password_hash($ipAddress,PASSWORD_DEFAULT);
-            SetCookie ( "eenkoekie", $hash,time() + ( 12 * 3600 * 1 ), "/" );
-            SetCookie ( "herinner", $login,time() + ( 24 * 3600 * 120), "/" );
-            $_SESSION['ingelogd']=true;
-            //var_dump($encoded_login);die;
-            Header ("Location:index.php" );
-
-        }
-        else $error="Fout.";
+        $ipAddress = $_SERVER['REMOTE_ADDR'];
+        $hash= password_hash($ipAddress,PASSWORD_DEFAULT);
+        SetCookie ( "eenkoekie", $hash,time() + ( 12 * 3600 * 1 ), "/" );
+        SetCookie ( "herinner", $login,time() + ( 24 * 3600 * 120), "/" );
+        $_SESSION['ingelogd']=true;
+        //var_dump($encoded_login);die;
+        Header ("Location:index.php" );
 
     }
-    //else print "HH";
+    else $error="Fout.";
+
+}
+//else print "HH";
 
 
 ?>
