@@ -18,7 +18,7 @@ require __DIR__ . '/bootstrap.php';
     <link rel="stylesheet" type="text/css" href="js3/DataTables-1.10.13/media/css/dataTables.jqueryui" />-->
 
     <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui-min.js"></script>
+    <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js3/DataTables-1.10.13/media/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
