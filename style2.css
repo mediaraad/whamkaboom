@@ -1,0 +1,56 @@
+/* stijlen voor in de mainpaginaas */
+body { font-size: 9pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; color:#69002A;text-align:center;background-color: #FFFEF6;}
+body#home {text-align:center;font-size: 9pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; color:#69002A;background-color: #FFFEF6;} /* url(images/bg_strip5.gif) no-repeat */
+body#held {text-align:left;font-size: 9pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; color:#69002A;background-color: #FFFEF6;}
+h3 {color:#69002A}
+h2 {color:#69002A}
+font { font-size: 9pt; font-family:  Verdana, Arial, Helvetica, sans-serif; }
+font.big { font-size: 12pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; color: #69002A }
+.groot {font-size: 12pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; font-weight:bold; color: #69002A }
+table { font-size: 9pt; text-align:left; margin:0 auto;border-collapse: collapse;}
+td { font-size: 9pt; font-family: Verdana, Arial, Helvetica, sans-serif; color:#69002A; font-weight:normal;}
+td.large { font-size: 9pt; font-family: Verdana, Arial, Helvetica, sans-serif; color:#69002A ; font-weight:bold;}
+/* verschil tussen de eerste en de rest van een serie */
+td.normaal { font-size: 9pt; font-family: Verdana, Arial, Helvetica, sans-serif; color:#69002A;background-color:#ffffff ;font-weight:bold;}
+td.gekleurd { font-size: 9pt; font-family: Verdana, Arial, Helvetica, sans-serif; color: #69002A;}
+tr.odd {vertical-align:top;}
+tr.odd:hover, tr.odd:hover td.normaal{background-color:#ffcc33;}
+
+td.rood { font-size: 9pt; font-family: Verdana, Arial, Helvetica, sans-serif; color:red;background-color:#ffffff;}
+a.small { font-size: 8pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; color: #FFFFFF; text-decoration: none }
+a.Norsmall { font-size: 8pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; color: #013684; text-decoration: none }
+
+.small { font-size: 8pt; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; text-decoration: none }
+a.text {text-decoration:none;color:#FF6600;font-family: "Lucida Grande", Helvetica, Arial, sans-serif;font-weight: bold;}
+a {text-decoration:none;color:#712B0E;font-family: "Lucida Grande", Helvetica, Arial, sans-serif;}
+a:hover {text-decoration:none;color:#FF6600;font-family: "Lucida Grande", Helvetica, Arial, sans-serif;}
+a.file {text-decoration:none;color:#333333;font-family: "Lucida Grande", Helvetica, Arial, sans-serif;}
+a.file:hover {text-decoration:none;color:#FF6600;font-family: "Lucida Grande", Helvetica, Arial, sans-serif;} 
+
+input { font-size: 9pt ; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; background-color: #ffcc33; border:1px solid #ffbf00; width:300px;}
+input.home {width:100px;}
+input.homesmall {width:20px; }
+input.homebig {width:200px;}
+
+input.but { font-size: 9pt ; font-family: Verdana; background-color: #ff5555; border:1px solid #e4ab00; width:90px;}
+input.but2 { font-size: 8pt ; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; background-color: #ffffee; border:1px solid #000000; width:100px;}
+textarea { font-size: 12px; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; background-color: #ffcc33; border: solid 1px #e4ab00; width: 296px;}
+select { font-size: 12px; font-family: "Lucida Grande", Helvetica, Arial, sans-serif; background-color: #ffcc33; border: solid 1px #e4ab00;}
+select.selecteer { width:204px;}
+#container {margin:0 auto; border:solid 1px #69002A;padding:0;width:700px;}
+
+/* menu 1 */
+#vat {margin:0px auto; border:solid 1px #69002A;padding:0;width:700px; height: 35px; text-align:center;}
+#menu_home {border-left:1px solid #000000; border-right:1px solid #69002A; text-align:center; width:50px;height:35px;font-size:12px; float:left; margin-left:140px; font-weight:bold;}
+#menu_home:hover {color:white; background-color:#69002A;}
+#menu_album {border-left:1px solid #000000;border-right:1px solid #69002A;text-align:center; width:50px;height:35px; font-size:12px; float:left; margin-left:10px; font-weight:bold;}
+#menu_album:hover {color:white; background-color:#69002A;}
+
+
+/* menu 2 */
+div#menu {font-family: "Lucida Grande", Helvetica, Arial, sans-serif; padding:0px; margin-left:40px; width:auto; height:33px;}
+div#menu ul {list-style-type:none;margin:0;}
+div#menu li {float:left;margin:0;}
+div#menu a {display:block; padding:10px; font-weight:bold; border-right: 1px solid #69002A;}
+div#menu a:hover {background:#69002A; color:#ffffff; font-weight:bold; display:block}
+
