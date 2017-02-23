@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax</title>
+ <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
+<script lang="JavaScript" type="text/javascript">
+    function swapContent(cv) {
+        $("#myDiv").html("Put animated gif here").show(); // $ is selector van jQuery; .html plaats html hier; .show allemaal jQ
+        var url="ajax_myphpscript.php";
+        $.post(url,{contentVar:cv},function(data){ //jQ post mechanisme variables (url, variables, return datafunction)
+                    $("#myDiv").html(data).show();
+        });
+    }
+</script>
+
+</head>
+<body>
+<a href="#" onclick="return false" onmousedown="javascript:swapContent('con1');">Content 1</a>
+<a href="#" onclick="return false" onmousedown="javascript:swapContent('con2');">Content 2</a>
+<a href="#" onclick="return false" onmousedown="javascript:swapContent('con3');">Content 3</a>
+<div id="myDiv">
+    My content
+
+</div>
+
+</body>
+</html>
