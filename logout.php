@@ -5,10 +5,10 @@ ini_set('session.gc_divisor',100);
 ini_set('session.save_path','/var/www/session');
 session_start();
 
-if (isset($_COOKIE['eenkoekie'])) {
-    //unset($_COOKIE['eenkoekie']);
-    setcookie ( "eenkoekie",'',1,"/");
-    setcookie ( PHPSESSID,'',1,"/");
+if (isset($_COOKIE['koekie'])) {
+    //unset($_COOKIE['koekie']);
+    setcookie ( "koekie",'',1,"/");
+    //setcookie ( PHPSESSID,'',1,"/");
 
 }
 

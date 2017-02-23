@@ -8,7 +8,7 @@ ini_set('session.gc_divisor',100);
 ini_set('session.save_path','/var/www/session');
 
 session_start();
-$eenkoekie = $_COOKIE['eenkoekie'];
+$koekie = $_COOKIE['koekie'];
 
 $container= new Container($configuration);
 $user= $container->getUserLogin();
@@ -20,7 +20,7 @@ if($_SESSION['ingelogd']==false || ($_SESSION['ingelogd']=='')) {
     }
 
 $ipAddress = $_SERVER['REMOTE_ADDR'];
-if (!password_verify($ipAddress,$eenkoekie)) {
+if (!password_verify($ipAddress,$koekie)) {
     session_unset();
     session_destroy();
     header('location: login.php');
