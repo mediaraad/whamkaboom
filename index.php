@@ -19,17 +19,6 @@ include "validate.php";
             $("#stripheld").autocomplete({
                 source: "ajax_autocomplete_stripheld.php",
                 minLength: 3
-                /*       select: function(event, ui) {
-                 var url = ui.item.id;
-                 if(url != '#') {
-                 location.href = '/blog/' + url;
-                 }
-                 },
-                 html: true, // optional (jquery.ui.autocomplete.html.js required)
-                 // optional (if other layers overlap autocomplete list)
-                 open: function(event, ui) {
-                 $(".ui-autocomplete").css("z-index", 1000);
-                 } */
             });
 
         });
@@ -55,14 +44,21 @@ include "validate.php";
     </form>
 </div>
 
-<p><hr><br>Een testje:
-<?php
-echo "<p><strong>sessies</strong><br>";
-echo " <br>session_id(): ".session_id();
-var_dump($_SESSION);
-echo "</p><p><strong>cookies</strong>";
-var_dump($_COOKIE);
-?>
+<p>&nbsp;<br>
+<div class="fragment">
+    <div>
+        <span id='close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
 
+        <h3>Cookies and Sessions</h3>
+        <?php
+        echo "<p><strong>sessies</strong><br>";
+        echo " <br>session_id(): ".session_id();
+
+        var_dump($_SESSION);
+        echo "</p><p><strong>cookies</strong>";
+        var_dump($_COOKIE);
+        ?>
+    </div>
+</div>
 </body>
 </html>

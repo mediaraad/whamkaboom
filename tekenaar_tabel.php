@@ -14,8 +14,7 @@ require __DIR__ . '/bootstrap.php';
     <title>Tekenaars uit database</title>
     <link rel='stylesheet' href='style.css'>
     <link rel="stylesheet" type="text/css" href="js3/jquery-ui-1.12.1/jquery-ui.css"/>
-<!--    <link rel="stylesheet" type="text/css" href="js3/DataTables-1.10.13/media/css/jquery.dataTables_themeroller.css" />
-    <link rel="stylesheet" type="text/css" href="js3/DataTables-1.10.13/media/css/dataTables.jqueryui" />-->
+    <!-- <link rel="stylesheet" type="text/css" href="js3/DataTables-1.10.13/media/css/dataTables.jqueryui.css" /> -->
 
     <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>

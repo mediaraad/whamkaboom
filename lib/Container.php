@@ -8,6 +8,8 @@ class Container
     private $tekenaarLader;
     private $veldenTekenaarTabel;
     private $userLogin;
+    private $ajaxAutoComplete;
+
 
     public function __construct(array $configuration)
     {
@@ -85,5 +87,19 @@ class Container
         }
         return $this->userLogin;
     }
+
+    /**
+     * @return ajaxAutoComplete
+     */
+    public function getAjaxAutoComplete()
+    {
+        if ($this->ajaxAutoComplete === null) {
+            $this->ajaxAutoComplete = new ajaxAutoComplete($this->getPDO());
+        }
+
+        return $this->ajaxAutoComplete;
+    }
+
+
 
 }

@@ -85,14 +85,26 @@ Graag inloggen:<P>
     id: <input class="home" name="login"  value="<?php if ( isset ( $last_login ) ) echo $last_login;?>" tabindex="1">
     ww: <input class="home" name="password" type="password" tabindex="2"> <input TYPE="hidden" name="remember" value="yes" > <input class="home" type="submit" value="Login" tabindex="3"><br>
 </form>
-<?php
+<p>&nbsp;</p>
 
-echo "<p><strong>sessies</strong><br>";
-echo " <br>session_id(): ".session_id();
+<br /><br />
+<div class="fragment">
+    <div>
+        <span id='close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>
 
-var_dump($_SESSION);
-echo "</p><p><strong>cookies</strong>";
-var_dump($_COOKIE);
-?>
+        <h3>Cookies and Sessions</h3>
+        <?php
+        echo "<p><strong>sessies</strong><br>";
+        echo " <br>session_id(): ".session_id();
+
+        var_dump($_SESSION);
+        echo "</p><p><strong>cookies</strong>";
+        var_dump($_COOKIE);
+        ?>
+    </div>
+</div>
+
+
+
 </body>
 </html>
