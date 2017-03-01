@@ -11,20 +11,6 @@ include "validate.php";
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
     <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="js3/jquery-ui-1.12.1/jquery-ui.css">
-    <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <script language="javascript">
-        $(function() {
-            $("#stripheld").autocomplete({
-                source: "ajax_autocomplete_stripheld.php",
-                minLength: 3
-            });
-
-        });
-    </script>
-
-
 </head>
 
 <body>
@@ -33,15 +19,10 @@ include "validate.php";
     include "menu.php";
     ?>
 
-    <h3>Stripcollectie:</h3>
+    <h3>Stripcollectie</h3>
+    Deze pagina is toegankelijk m.b.v. een wachtwoord
 
-    <form action="strip_view.php" method="post"> Zoek een held
-        <input name="held" id=stripheld> <input class=home type="submit" value="ok" name=put  >
-    </form>
-    <br>
-    <form action="tekenaar_view.php" method="post"> Kies een tekenaar
-        <input name="tekenaar"> <input class=home type="submit" value="ok" name=put>
-    </form>
+
 </div>
 
 <p>&nbsp;<br>

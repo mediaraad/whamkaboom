@@ -2,9 +2,6 @@
 class UserLogin
 {
     private $pdo;
-    private $userName;
-    private $role;
-
     private $error = false;
 
 
@@ -28,7 +25,7 @@ class UserLogin
     public function checkUser($userName,$password)
     {
         $userData = $this->queryForUser($userName);
-
+        // TODO: stel er zijn meerder users met dezelfde naam
         $user=$userData['user_name'];
         $goIn = false;
         if (!($user===null)) {

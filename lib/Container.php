@@ -9,6 +9,7 @@ class Container
     private $veldenTekenaarTabel;
     private $userLogin;
     private $ajaxAutoComplete;
+    private $userCrud;
 
 
     public function __construct(array $configuration)
@@ -100,6 +101,17 @@ class Container
         return $this->ajaxAutoComplete;
     }
 
+    /**
+     * @return userCrud
+     */
+    public function getUserCrud()
+    {
+        if ($this->userCrud === null) {
+            $this->userCrud = new UserCrud($this->getPDO());
+        }
+
+        return $this->userCrud;
+    }
 
 
 }
