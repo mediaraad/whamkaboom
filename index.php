@@ -32,7 +32,7 @@ include "validate.php";
 <p><hr><br>Een testje:
 <?php
 
-$password="12345";
+$password="peterstrip";
 $hash= password_hash($password,PASSWORD_DEFAULT);
 echo "<p>hash: ".$hash;
 $test=password_verify($password,$hash);

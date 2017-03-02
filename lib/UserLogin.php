@@ -29,11 +29,17 @@ class UserLogin
     {
         $userData = $this->queryForUser($userName);
 
+
         $user=$userData['user_name'];
         $goIn = false;
         if (!($user===null)) {
             $hash=$userData['user_hash'];
+
+
             if (password_verify($password,$hash)) {
+
+
+
                 $goIn = true;
 
             }
