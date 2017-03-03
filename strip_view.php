@@ -40,23 +40,38 @@ require __DIR__ . '/bootstrap.php';
             });
         }
 
-        function popup() { popp.style.display="block"; }
-        function close() {
-            var e = document.getElementById('popp');
-            e.style.display="none";
-        }
-     
+
+
+        $(function() {
+            var moveLeft = 30;
+            var moveDown = -20;
+
+            $('a.trigger').hover(function(e) {
+                $('div#popp').show();
+                //.css('top', e.pageY + moveDown)
+                //.css('left', e.pageX + moveLeft)
+                //.appendTo('body');
+            }, function() {
+                $('div#popp').hide();
+            });
+
+            $('a.trigger').mousemove(function(e) {
+                $("div#popp").css('top', e.pageY + moveDown).css('left', e.pageX + moveLeft);
+            });
+
+        });
 
     </script>
    <style type="text/css">
        #popp {
-           position:absolute; top:233px; left: 50%;
-           background-color:#eee0ee;
+           display: none;
+           /*position: absolute;*/
            width: 500px;
-           text-align: left;
-           padding:0px;
-           border:1px solid #000;
-           z-index: 902;
+           padding: 10px;
+           background: #eeeeee;
+           color: #000000;
+           border: 1px solid #1a1a1a;
+           font-size: 90%;
        }
        #outputdiv {
            background-color: #eeeeee; border:1px solid red;
@@ -84,18 +99,18 @@ echo $held . "*<br>";
 //$stripboek = new Stripboek();
 echo "<table>";
 foreach ($stripboeken as $stripboek) {
-    echo "<tr><td><a href='#' onclick='popup();javascript:getHeld(\"".$stripboek->getHeld() . "\");'> ".$stripboek->getHeld() . "</a></td><td>" . $stripboek->getTitle() ."</td><td>". $stripboek->getDeel() ."</td><td>".$stripboekLader->findTekenaarInStringById($stripboek->getTekenaar()) ."</td><td>" . $stripboek->getJaaruitgave() ."</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
+    echo "<tr><td><a href='#'  class='trigger' onclick='javascript:getHeld(\"".$stripboek->getHeld() . "\");'> ".$stripboek->getHeld() . "</a></td><td>" . $stripboek->getTitle() ."</td><td>". $stripboek->getDeel() ."</td><td>".$stripboekLader->findTekenaarInStringById($stripboek->getTekenaar()) ."</td><td>" . $stripboek->getJaaruitgave() ."</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
 }
 echo "</table>";
 //var_dump($stripboeken);
 
 
 ?>
-    
-    <div id="popp"  style="display: none;">
-        <a href=""></a>
+    <a href="#" id="trigger">test</a>
+    <div id="popp" >
+
     <div id="outputdiv"">
-aa
+    klik op link!
 
     </div>
     </di>
