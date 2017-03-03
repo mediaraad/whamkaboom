@@ -65,7 +65,7 @@ require __DIR__ . '/bootstrap.php';
    <style type="text/css">
        #popp {
            display: none;
-           /*position: absolute;*/
+           position: absolute;
            width: 500px;
            padding: 10px;
            background: #eeeeee;
