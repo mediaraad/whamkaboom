@@ -41,25 +41,30 @@ require __DIR__ . '/bootstrap.php';
         }
 
         function popup() { popp.style.display="block"; }
-        function close() { popp.style.display="none"; }
+        function close() {
+            var e = document.getElementById('popp');
+            e.style.display="none";
+        }
+     
 
     </script>
    <style type="text/css">
        #popp {
            position:absolute; top:233px; left: 50%;
-           background-color:#eeeeee;
+           background-color:#eee0ee;
            width: 500px;
            text-align: left;
-           padding:10px;
+           padding:0px;
            border:1px solid #000;
            z-index: 902;
        }
        #outputdiv {
-           background-color: #eeeeee;
+           background-color: #eeeeee; border:1px solid red;
            width: 500px;
            text-align: left;
-           padding: 10px;
-           border: 1px solid #000;
+           padding: 3px;
+           margin-top: 20px;
+
            z-index: 9002;
        }
    </style>
@@ -72,8 +77,6 @@ echo "<a href=\"index.php\">home</a><p>";
 
 $container = new Container($configuration);
 $stripboekLader = $container->getStripboekLader();
-//$tekenaarLader = $container->getTekenaarLader();
-//$stripboeken = $container->getStripboekLader()->getStripboeken($held);
 $stripboeken = $stripboekLader->getStripboeken($held);
 
 echo $held . "*<br>";
@@ -88,10 +91,11 @@ echo "</table>";
 
 
 ?>
+    
     <div id="popp"  style="display: none;">
-    <span id='close' onclick='javascript:close();return true;'>x</span>
+        <a href=""></a>
     <div id="outputdiv"">
-
+aa
 
     </div>
     </di>
