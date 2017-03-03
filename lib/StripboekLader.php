@@ -35,7 +35,7 @@ class StripboekLader
 
     private function queryForStripboek($held ="") {
         $pdo= $this->getPDO();
-        $statement = $pdo->prepare('SELECT * FROM stripheld_tbl WHERE stripheld_held LIKE :held ORDER BY stripheld_held,stripheld_deel');
+        $statement = $pdo->prepare('SELECT * FROM stripheld_tbl WHERE stripheld_held LIKE :held group by stripheld_held  ORDER BY stripheld_held,stripheld_deel');
         if ($held=="") $naam="";
         else $naam=$held."%";
         $statement->bindParam(':held',$naam, PDO::PARAM_STR);

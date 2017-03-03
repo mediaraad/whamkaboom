@@ -6,6 +6,7 @@ if(!$isAjax) {
 	trigger_error($user_error, E_USER_ERROR);
 	}
 
+
 // get what user typed in autocomplete input
 $term = trim($_GET['term']);
  

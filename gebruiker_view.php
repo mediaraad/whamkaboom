@@ -20,7 +20,9 @@ require __DIR__ . '/bootstrap.php';
     include "menu.php";
 
     $zoek = isset($_POST['gebruiker']) ? $_POST['gebruiker'] : "";
-
+    if ($zoek=="") {
+        $zoek= isset($_GET['all'])?"%":"";
+    }
     $container = new Container($configuration);
     $userCrud = $container->getUserCrud();
     $users = $userCrud->getUsers($zoek,"");

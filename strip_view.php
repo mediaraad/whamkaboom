@@ -26,7 +26,7 @@ echo $held . "*<br>";
 //$stripboek = new Stripboek();
 echo "<table>";
 foreach ($stripboeken as $stripboek) {
-    echo "<tr><td>".$stripboek->getHeld() . "</td><td>" . $stripboek->getTitle() ."</td><td>". $stripboek->getDeel() ."</td><td>".$stripboekLader->findTekenaarInStringById($stripboek->getTekenaar()) ."</td><td>" . $stripboek->getJaaruitgave() ."</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
+    echo "<tr><td><a href='#' id=held> ".$stripboek->getHeld() . "</a></td><td>" . $stripboek->getTitle() ."</td><td>". $stripboek->getDeel() ."</td><td>".$stripboekLader->findTekenaarInStringById($stripboek->getTekenaar()) ."</td><td>" . $stripboek->getJaaruitgave() ."</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
 }
 echo "</table>";
 //var_dump($stripboeken);

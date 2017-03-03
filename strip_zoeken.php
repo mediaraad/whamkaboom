@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/bootstrap.php';
-include "validate.php";
+ include "validate.php";
 
 ?>
 <!DOCTYPE html>
@@ -15,13 +15,30 @@ include "validate.php";
     <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script language="javascript">
-        $(function() {
+
+
+        $(function () {
+
+
+            $('#stripheld').keydown(function () {
+                console.log('#someButton wass clicked');
+                // do something
+            });
+
+
+
             $("#stripheld").autocomplete({
                 source: "ajax_autocomplete_stripheld.php",
                 minLength: 3
             });
 
+
+
+
         });
+
+
+
     </script>
 
 
