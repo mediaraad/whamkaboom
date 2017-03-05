@@ -13,13 +13,12 @@ require __DIR__ . '/bootstrap.php';
     </style>
     <title>Tekenaars uit database</title>
     <link rel='stylesheet' href='style.css'>
-    <link rel="stylesheet" type="text/css" href="css/jquery_ui/jquery-ui-1.10.3.custom.css"/>
-    <link rel="stylesheet" type="text/css" href="css/datatables_table_jui.css" />
-    <link rel="stylesheet" type="text/css" href="css/datatables_page.css" />
+    <link rel="stylesheet" type="text/css" href="js3/jquery-ui-1.12.1/jquery-ui.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="js3/DataTables-1.10.13/media/css/dataTables.jqueryui.css" /> -->
 
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui-min.js"></script>
-    <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js3/DataTables-1.10.13/media/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             //$('#menu_item4').addClass("ui-tabs-active ui-state-active ui-tabs-loading");
@@ -34,21 +33,30 @@ require __DIR__ . '/bootstrap.php';
                     "sInfoEmpty":    "Er zijn geen items om te tonen",
                     "sInfoFiltered": "(gefilterd uit _MAX_ rijen)",
                     "sInfoPostFix":  "",
-                    "sSearch":       "Zoek:",
+                    "sSearch":       "Zoek ",
                     "sUrl":          "",
+/*
+
+                    "bProcessing": true,
+                    "bServerSide": true,
+                    "sAjaxSource": "ajax.php",
+                    "sPaginationType": "full_numbers",
+                    "sServerMethod": "POST",
+*/
+
                     "oPaginate": {
                         "sFirst":    "Eerste",
                         "sPrevious": "Vorige",
                         "sNext":     "Volgende",
                         "sLast":     "Laatste"}
-                },
-                "iDisplayLength": 40,
-                "bJQueryUI": true,
-                "sPaginationType": "full_numbers",
-                "aoColumnDefs": [
-                    {"bSortable": false, "aTargets": [0,3,4,5,7,8,9]},
-                    {"bVisible": false, "aTargets": []}
-                ],
+                    },
+                    "iDisplayLength": 40,
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers",
+                    "aoColumnDefs": [
+                        {"bSortable": false, "aTargets": [0,3,4,5,7,8,9]},
+                        {"bVisible": false, "aTargets": []}
+                    ],
                 "aaSorting" : [[1,"asc"]]
             });
 

@@ -15,7 +15,7 @@ table {
 }
 
 td {
-    border: solid 1px gray; padding: 1px;
+    border: solid 1px gray; padding: 3px;
     text-align: left !important;
 }
 td.vet {font-weight: bold;}
@@ -26,3 +26,48 @@ div#menu ul {list-style-type:none;margin:0;}
 div#menu li {float:left;margin:0;}
 div#menu a {display:block; padding:10px; font-weight:bold; border-right: 1px solid #69002A; text-decoration: none; color: gray;}
 div#menu a:hover {background:#69002A; color:#ffffff; font-weight:bold; display:block}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 98%;
+    color: #a8a8a8; border: solid 1px gray;
+}
+
+/*div with a close button */
+.fragment {
+    font-size: 12px;
+    font-family: tahoma;
+    width: 500px;
+    border: 1px solid #ccc;
+    color: #a8a8a8;
+    display: block;
+    padding: 10px;
+    box-sizing: border-box;
+    text-decoration: none; margin: 0 auto;
+}
+
+.fragment:hover {
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2);
+
+}
+
+.fragment img {
+    float: left;
+    margin-right: 10px;
+}
+
+.fragment h3 {
+    padding: 0;
+    margin: 0;
+    color: #369;
+}
+
+#close {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;cursor: pointer;
+}
+
+
