@@ -1,13 +1,13 @@
 <?php
 require __DIR__ . '/bootstrap.php';
- include "validate.php";
-
+include "validate.php";
+$pagina=new Pagina("Stripboek zoeken");
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Stripboek zoeken</title>
+    <title><?php echo $pagina->getTitelPagina(); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
     <link rel="stylesheet" href="style.css" type="text/css">
@@ -29,7 +29,7 @@ require __DIR__ . '/bootstrap.php';
 <body>
 <div id="container">
     <?php
-    include "menu.php";
+    $pagina->paginaMenu(2);
     ?>
 
     <h3>Stripboek zoeken</h3>
@@ -40,6 +40,8 @@ require __DIR__ . '/bootstrap.php';
 </div>
 
 <p>&nbsp;<br>
-
+<?php
+$pagina->footer();
+?>
 </body>
 </html>

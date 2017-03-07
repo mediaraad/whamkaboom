@@ -1,12 +1,12 @@
 <?php
 require __DIR__ . '/bootstrap.php';
-
+$pagina=new Pagina("Toon stripboeken");
 ?>
 
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Show Strip database</title>
+    <title><?php echo $pagina->getTitelPagina(); ?></title>
     <link rel='stylesheet' href='style.css' type="text/css">
 
     <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
@@ -140,7 +140,9 @@ require __DIR__ . '/bootstrap.php';
 <body>
 <div id="container">
     <?php
-    include "menu.php";
+
+    $pagina->paginaMenu(2);
+
     $held = isset($_POST['held']) ? $_POST['held'] : "";
 
 
@@ -169,5 +171,8 @@ require __DIR__ . '/bootstrap.php';
     </div>
     </di>
 </div>
+<?php
+$pagina->footer();
+?>
 </body>
 </html>
