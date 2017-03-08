@@ -40,7 +40,7 @@ echo "<p>hash: ".$hash;
 $test=password_verify($password,$hash);
 echo "<br>password_verify: ".$test;
 
-
+?>
 
 </div>
 
