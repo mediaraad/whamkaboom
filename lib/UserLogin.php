@@ -25,12 +25,19 @@ class UserLogin
     public function checkUser($userName,$password)
     {
         $userData = $this->queryForUser($userName);
+
         // TODO: stel er zijn meerder users met dezelfde naam
+
         $user=$userData['user_name'];
         $goIn = false;
         if (!($user===null)) {
             $hash=$userData['user_hash'];
+
+
             if (password_verify($password,$hash)) {
+
+
+
                 $goIn = true;
 
             }

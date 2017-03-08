@@ -141,14 +141,35 @@ $pagina=new Pagina("Toon stripboeken");
 <div id="container">
     <?php
 
+
     $pagina->paginaMenu(2);
 
     $held = isset($_POST['held']) ? $_POST['held'] : "";
 
 
+    echo "<a href=\"index.php\">home</a><p>";
+
+    $container = new Container($configuration);
+    $stripboekLader = $container->getStripboekLader();
+    //$tekenaarLader = $container->getTekenaarLader();
+    //$stripboeken = $container->getStripboekLader()->getStripboeken($held);
+    $stripboeken = $stripboekLader->getStripboeken($held);
+
+    echo $held . "*<br>";
+
+    //$stripboek = new Stripboek();
+    echo "<table>";
+    foreach ($stripboeken as $stripboek) {
+        echo "<tr><td>" . $stripboek->getHeld() . "</td><td>" . $stripboek->getTitle() . "</td><td>" . $stripboek->getDeel() . "</td><td>" . $stripboekLader->findTekenaarInStringById($stripboek->getTekenaar()) . "</td><td>" . $stripboek->getJaaruitgave() . "</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
+    }
+    echo "</table>";
+    //var_dump($stripboeken);
+
+
     $container = new Container($configuration);
     $stripboekLader = $container->getStripboekLader();
     $stripboeken = $stripboekLader->getStripboeken($held);
+
 
     echo "<br>".$held . "*<br>";
 
@@ -170,6 +191,7 @@ $pagina=new Pagina("Toon stripboeken");
 
     </div>
     </di>
+
 </div>
 <?php
 $pagina->footer();
