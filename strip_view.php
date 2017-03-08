@@ -141,14 +141,21 @@ $pagina=new Pagina("Toon stripboeken");
 <div id="container">
     <?php
 
+
     $pagina->paginaMenu(2);
 
     $held = isset($_POST['held']) ? $_POST['held'] : "";
 
 
+    echo "<a href=\"index.php\">home</a><p>";
+
+
+
+
     $container = new Container($configuration);
     $stripboekLader = $container->getStripboekLader();
     $stripboeken = $stripboekLader->getStripboeken($held);
+
 
     echo "<br>".$held . "*<br>";
 
@@ -170,6 +177,7 @@ $pagina=new Pagina("Toon stripboeken");
 
     </div>
     </di>
+
 </div>
 <?php
 $pagina->footer();

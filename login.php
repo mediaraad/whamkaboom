@@ -16,7 +16,7 @@ ini_set('session.gc_divisor',100);
 # read/write permissions to this directory.
 //session_save_path( '/var/www/session'); // werkt niet!
 //ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/session'));
-ini_set('session.save_path','/var/www/session');
+//ini_set('session.save_path','/var/www/session');
 
 session_start();
 
@@ -35,6 +35,7 @@ $container= new Container($configuration);
 $user= $container->getUserLogin();
 
 
+
 if ( ! empty ( $login ) && ! empty ( $password ) ) {
     if ( $user->checkUser($login, $password) ) {
 
@@ -45,6 +46,7 @@ if ( ! empty ( $login ) && ! empty ( $password ) ) {
         $_SESSION['ingelogd']=true;
         //var_dump($encoded_login);die;
         Header ("Location:index.php" );
+
 
     }
     else $error="Fout.";

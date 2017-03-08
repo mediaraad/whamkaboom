@@ -1,30 +1,14 @@
 <?php
 
+$url = "https://www.google.nl/search?q=asterix+de+gallier&biw=1149&bih=937&source=lnms&tbm=isch&sa=X&sqi=2&ved=0ahUKEwi-mNarpJfSAhXMAMAKHZWfAl4Q_AUIBigB#q=asterix+de+gallier&tbm=isch&tbas=0&imgrc=_";
+
+// $url = "https://www.google.nl/imgres?imgurl=http%3A%2F%2Fwww.asterix.com%2Fbd%2Falbs%2F01dex.jpg&imgrefurl=http%3A%2F%2Fwww.asterix.com%2Fde-collectie%2Fde-albums%2Fasterix-de-gallier.html&docid=fz-HKDuagMdCSM&tbnid=QagqUsfnJ-aK-M%3A&vet=1&w=435&h=580&bih=937&biw=1595&q=asterix%20de%20gallier&ved=0ahUKEwjTiPPXpJfSAhVCuBQKHTuhDscQMwgaKAAwAA&iact=mrc&uact=8";
 
 
-// Script to test if the CURL extension is installed on this server
-
-// Define function to test
-
-/*function _is_curl_installed() {
-    if  (in_array  ('curl', get_loaded_extensions())) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-// Ouput text to user based on test
-if (_is_curl_installed()) {
-    echo "cURL is <span style=\"color:blue\">installed</span> on this server";
-} else {
-    echo "cURL is NOT <span style=\"color:red\">installed</span> on this server";
-}*/
+// $client->setHeader('User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36');
 
 
-$url = "https://www.google.nl/search?q=asterix+de+gallier";
-   function curl($url) {
+function curl($url) {
         $ch = curl_init();  // Initialising cURL
         curl_setopt($ch, CURLOPT_URL, $url);    // Setting cURL's URL option with the $url variable passed into the function
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE); // Setting cURL's option to return the webpage data
@@ -39,16 +23,23 @@ $url = "https://www.google.nl/search?q=asterix+de+gallier";
 
 <head>
     <meta charset="utf-8">
-
     <title>Strip collectie</title>
-
     <link rel='stylesheet' href='style.css' type="text/css">
+
+
 </head>
 <body>
 
 <?php
 
-echo curl($url);
+
+
+
+$html = curl($url);
+echo '<pre>';
+echo ($html);
+echo '</pre>';
+
 ?>
 </body>
 </html>

@@ -5,7 +5,7 @@
 ini_set('session.gc_maxlifetime',10800);
 ini_set('session.gc_probability',1);
 ini_set('session.gc_divisor',100);
-ini_set('session.save_path','/var/www/session');
+//ini_set('session.save_path','');
 
 session_start();
 $koekie = $_COOKIE['koekie'];

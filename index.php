@@ -19,9 +19,28 @@ include "validate.php";
     include "menu.php";
     ?>
 
-    <h3>Stripcollectie</h3>
-    Deze pagina is toegankelijk m.b.v. een wachtwoord
 
+    <h3>Stripcollectie:</h3>
+
+    <form action="strip_view.php" method="post"> Kies een held
+        <input name="held"> <input class=home type="submit" value="ok" name=put>
+    </form>
+    <br>
+    <form action="tekenaar_view.php" method="post"> Kies een tekenaar
+        <input name="tekenaar"> <input class=home type="submit" value="ok" name=put>
+    </form>
+</div>
+
+<p><hr><br>Een testje:
+<?php
+
+$password="peterstrip";
+$hash= password_hash($password,PASSWORD_DEFAULT);
+echo "<p>hash: ".$hash;
+$test=password_verify($password,$hash);
+echo "<br>password_verify: ".$test;
+
+?>
 
 </div>
 
