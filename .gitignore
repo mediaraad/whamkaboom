@@ -1,7 +1,4 @@
+crawl/
 .idea/
-<<<<<<< HEAD
-bootstrap.php
-=======
-js3/jquery-ui-1.12.1/images
 ajax/
->>>>>>> 94a6fe2e94f2ff873cdd086b775fa4a158f7a167
+js3/jquery-ui-1.12.1/images
