@@ -1,12 +1,19 @@
 <?php
 
+
+
+
 class Container
 {
     private $configuration;
     private $pdo;
     private $stripboekLader;
+
+    private $uitgeverLader;
+
     private $tekenaarLader;
     private $veldenTekenaarTabel;
+
     private $userLogin;
 
     public function __construct(array $configuration)
@@ -52,6 +59,18 @@ class Container
         }
         return $this->stripboekLader;
     }
+
+    /**
+     * @return StripboekLader
+     */
+    public function getUitgeverLader()
+    {
+        if ($this->uitgeverLader === null) {
+            $this->uitgeverLader = new UitgeverLader($this->getPDO());
+        }
+        return $this->uitgeverLader;
+    }
+
 
     /**
      * @return TekenaarLader

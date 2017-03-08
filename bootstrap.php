@@ -7,6 +7,11 @@ require_once __DIR__.'/TekenaarLader.php';
 require_once __DIR__.'/Container.php';
 */
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+
 spl_autoload_register(function($className) {
     $path = __DIR__.'/lib/'.$className.'.php';
     if (file_exists($path)) {
