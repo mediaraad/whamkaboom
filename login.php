@@ -27,6 +27,7 @@ $login=isset($_POST['login'])? $_POST['login']:"";
 $password=isset($_POST['password'])? $_POST['password']:"";
 $herinner =isset($_COOKIE['herinner'])?  $_COOKIE['herinner']:"";
 
+
 if ( !empty($herinner) && empty ($login) )  $last_login = $login = $herinner;
 if ( !empty ($last_login) ) $login = "";
 
@@ -100,6 +101,10 @@ Graag inloggen:<P>
         var_dump($_SESSION);
         echo "</p><p><strong>cookies</strong>";
         var_dump($_COOKIE);
+
+        $dateTimeNow=date("Y-m-d H:i:s");
+        echo $dateTimeNow;
+
         ?>
     </div>
 </div>

@@ -108,8 +108,9 @@ class UserCrud {
             $stmt->bindparam(":rol",$role, PDO::PARAM_INT);
             $stmt->bindparam(":actief",$active);
             $stmt->bindparam(":email",$email);
-            $date=date('Y-m-d H:i:s',time());
+            //$date=date('Y-m-d H:i:s',time());
             //$stmt->bindparam(":datum",date("Y-m-d H:i:s", strtotime($creationDate)), PDO::PARAM_STR);
+            $date=date("Y-m-d H:i:s");
             $stmt->bindparam(":datum",$date, PDO::PARAM_STR);
             $stmt->execute();
             $idLast=$pdo->lastInsertID();

@@ -1,13 +1,13 @@
 <?php
 require __DIR__ . '/bootstrap.php';
 include "validate.php";
-
+$pagina=new Pagina("Stripboek zoeken");
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Stripboek zoeken</title>
+    <title><?php echo $pagina->getTitelPagina(); ?></title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
     <link rel="stylesheet" href="style.css" type="text/css">
@@ -15,12 +15,11 @@ include "validate.php";
     <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>
     <script language="javascript">
-        $(function() {
+        $(function () {
             $("#stripheld").autocomplete({
                 source: "ajax_autocomplete_stripheld.php",
                 minLength: 3
             });
-
         });
     </script>
 
@@ -30,7 +29,7 @@ include "validate.php";
 <body>
 <div id="container">
     <?php
-    include "menu.php";
+    $pagina->paginaMenu(2);
     ?>
 
     <h3>Stripboek zoeken</h3>
@@ -41,6 +40,8 @@ include "validate.php";
 </div>
 
 <p>&nbsp;<br>
-
+<?php
+$pagina->footer();
+?>
 </body>
 </html>
