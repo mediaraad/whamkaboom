@@ -18,8 +18,8 @@ class Pagina {
         else echo "<li><a href=\"gebruiker_zoeken.php?\">Gebruiker</a></li>";
         if ($item == 4) echo "<li><a id=select href=\"tekenaar_zoeken.php\">Tekenaar</a></li>";
         else echo "<li><a href=\"tekenaar_zoeken.php\">Tekenaar</a></li>";
-        if ($item == 4) echo "<li><a id=select href=\"uitgever_change.php\">Uitgeverij</a></li>";
-        else echo "<li><a href=\"uitgever_change.php\">Uitgeverij</a></li>";
+        if ($item == 4) echo "<li><a id=select href=\"uitgever_zoeken.php\">Uitgeverij</a></li>";
+        else echo "<li><a href=\"uitgever_zoeken.php\">Uitgeverij</a></li>";
         echo "<li><a href=\"#\" style='color: #ffffff;'><div style='display: inline; border: solid 1px green;'>&nbsp;&nbsp;&nbsp;&nbsp;</div></a></li><li><a href=\"logout.php\">Logout</a></li>";
         echo "</ul> </div>";
     }

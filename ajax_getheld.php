@@ -14,7 +14,7 @@ $a_json = array();
 $a_json_row = array();
  
 // database connection
-$conn = new mysqli("localhost", "whamkaboom", "okidoki", "strips");
+$conn = new mysqli("localhost", "root", "buhbuh", "strip_db");
  
 if($conn->connect_error) {
 	echo 'Database connection failed...' . 'Error: ' . $conn->connect_errno . ' ' . $conn->connect_error;

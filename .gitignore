@@ -1,6 +1,5 @@
-
 .idea/
 ajax/
-js3/jquery-ui-1.12.1/images
+js3/jquery-ui-1.12.1/images/
 bootstrap.php
-
+ajax_getheld.php

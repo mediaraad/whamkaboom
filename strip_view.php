@@ -146,23 +146,19 @@ $pagina=new Pagina("Toon stripboeken");
 
     $held = isset($_POST['held']) ? $_POST['held'] : "";
 
-
-    echo "<a href=\"index.php\">home</a><p>";
-
-
-
-
     $container = new Container($configuration);
     $stripboekLader = $container->getStripboekLader();
     $stripboeken = $stripboekLader->getStripboeken($held);
 
 
-    echo "<br>".$held . "*<br>";
+    echo "<br>Zoeken: ".$held . "*<br>";
 
     //$stripboek = new Stripboek();
     echo "<table>";
+    echo "<tr><td>Stripheld/titel</td><td>Aantal titels</td><td>Tekenaar(s)</td><td>Schrijver(s)</td><td>Jaar</td><td></td><td></td><td></td></tr>";
     foreach ($stripboeken as $stripboek) {
-        echo "<tr><td><span class='trigger' onclick='javascript:getHeld(\"".$stripboek->getHeld() . "\");'> ".$stripboek->getHeld() . "</span></td><td>" . $stripboek->getTitle() ."</td><td>". $stripboek->getDeel() ."</td><td>".$stripboekLader->findTekenaarInStringById($stripboek->getTekenaar()) ."</td><td>" . $stripboek->getJaaruitgave() ."</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
+        echo "<tr><td><span class='trigger' onclick='javascript:getHeld(\"".$stripboek->getHeld() . "\");'> ".$stripboek->getHeld() . "</span></td><td>" . $stripboek->getTitle() ."</td>";
+        echo "<td>". $stripboekLader->findTekenaarInStringById($stripboek->getTekenaar(),0) ."</td><td>".$stripboekLader->findTekenaarInStringById(0,$stripboek->getSchrijver()) ."</td><td>" . $stripboek->getJaaruitgave() ."</td><td><a href=strip_bewerk.php>bewerk</a></td><td>verwijder</td><td>copy</td></tr>";
     }
     echo "</table>";
     //var_dump($stripboeken);
