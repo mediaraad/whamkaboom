@@ -23,14 +23,12 @@ $pagina=new Pagina("Toon stripboeken");
                     deVar: deVar
                 }
             }).done(function (response) {
-
-
                 var trHtml="";
                 var i=1;
                 $.each(response, function(key, value) {
                         trHtml +=i+". "+ value.held + " - "+ value.titel +"<br>";
                         i++;
-                        console.log(value.held);
+                        //console.log(value.held);
                     }
                 );
                 $("#outputdiv").html(trHtml);
@@ -49,8 +47,8 @@ $pagina=new Pagina("Toon stripboeken");
         $(document).ready(function(){
 
             $(document).mousemove(function(e){
-                mouseX = e.pageX+20;
-                mouseY = e.pageY-20;
+                mouseX = e.pageX+40;
+                mouseY = e.pageY-40;
                 //console.log(mouseX);
                 //To Get the relative position
                 if( this.offsetLeft !=undefined) mouseX = e.pageX - this.offsetLeft;
@@ -84,18 +82,20 @@ $pagina=new Pagina("Toon stripboeken");
 
                 if(popupLeft < 0 || popupLeft == undefined) popupLeft = 0;
                 if(popupTop < 0 || popupTop == undefined) popupTop = 0;
-               /* setTimeout(function() {
+                /*setTimeout(function() {
                     $( "#popp" ).hide();
                 }, 10000);*/
                 $('div#popp').offset({top:popupTop,left:popupLeft});
             });
 
 
-            $("body").click(function(e) {
+
+            $('#container').click(function(e) {
                 if(e.target.id == "popp"){
                     $('div#popp').hide();
                 }
             });
+
 
 
         });
@@ -166,13 +166,10 @@ $pagina=new Pagina("Toon stripboeken");
 
     ?>
 
-    <div id="popp" >
-        [sluit]
-        <div id="outputdiv"">
-
-
+    <div id="popp">
+        [x]
+        <div id="outputdiv""></div>
     </div>
-    </di>
 
 </div>
 <?php

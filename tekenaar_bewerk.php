@@ -28,8 +28,8 @@ echo "<table><form name='tekenaar' action='tekenaar_bewerk.php' method='post'> "
 
 if ($bewaren) {
     $id=isset($_POST['id']) ? $_POST['id'] : "";
-    echo "<tr><td colspan='2'>bewaren post[{$id}]</td> </tr>";
-    echo "<tr><td colspan='2'>".$id." * ".$_POST['achternaam']." * ".$_POST['voornaam']." * ".$_POST['alias']." * ".$_POST['gbdatum']." * ".$_POST['gbland']." * ".$_POST['rol']." * ".$_POST['image']." * ".$_POST['opmerking']."</td> </tr>";
+    echo "<tr><td colspan=2>bewaren post[{$id}]</td> </tr>";
+    echo "<tr><td colspan=2>".$id." * ".$_POST['achternaam']." * ".$_POST['voornaam']." * ".$_POST['alias']." * ".$_POST['gbdatum']." * ".$_POST['gbland']." * ".$_POST['rol']." * ".$_POST['image']." * ".$_POST['opmerking']."</td> </tr>";
     $verander= $dataLader->createOrUpdateTekenaar($id,$_POST['achternaam'],$_POST['voornaam'],$_POST['alias'],$_POST['gbdatum'],$_POST['gbland'],$_POST['rol'],$_POST['image'],$_POST['opmerking']);
     //header ( "Location: tekenaar_view.php?letter=$letter" );
 }

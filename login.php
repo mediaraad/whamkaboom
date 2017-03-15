@@ -16,7 +16,7 @@ ini_set('session.gc_divisor',100);
 # read/write permissions to this directory.
 //session_save_path( '/var/www/session'); // werkt niet!
 //ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/session'));
-//ini_set('session.save_path','/var/www/session');
+ini_set('session.save_path','/var/www/session');
 
 session_start();
 

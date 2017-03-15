@@ -27,8 +27,8 @@ else $conn->set_charset('utf8');
  * Create SQL
  */
 
-$sql = 'SELECT stripheld_id, stripheld_held,stripheld_titelalbum FROM stripheld_tbl WHERE stripheld_held is not null ';
-$sql .= ' AND stripheld_held = ' . "'" . $conn->real_escape_string($held) . "'";
+$sql = 'SELECT stripheld_id, stripheld_held,stripheld_titelalbum,stripheld_deel FROM stripheld_tbl WHERE stripheld_held is not null ';
+$sql .= ' AND stripheld_held = ' . "'" . $conn->real_escape_string($held) . "' order by stripheld_deel";
 
 $rs = $conn->query($sql);
 if($rs === false) {

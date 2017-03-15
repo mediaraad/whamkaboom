@@ -8,13 +8,12 @@ $pagina=new Pagina("Stripboek zoeken");
 
 <head>
     <title><?php echo $pagina->getTitelPagina(); ?></title>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=uft-8">
-    <link rel="stylesheet" href="style.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="js3/jquery-ui-1.12.1/jquery-ui.css">
-    <script type="text/javascript" src="js3/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js3/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-    <script language="javascript">
+    <meta charset=utf-8>
+    <link rel=stylesheet href=style.css type=text/css>
+    <link rel=stylesheet type=text/css href=js3/jquery-ui-1.12.1/jquery-ui.css>
+    <script type=text/javascript src=js3/jquery-3.1.1.min.js></script>
+    <script type=text/javascript src=js3/jquery-ui-1.12.1/jquery-ui.min.js></script>
+    <script type=text/javascript>
         $(function () {
             $("#stripheld").autocomplete({
                 source: "ajax_autocomplete_stripheld.php",
@@ -30,6 +29,7 @@ $pagina=new Pagina("Stripboek zoeken");
 <div id="container">
     <?php
     $pagina->paginaMenu(2);
+    $pagina->movingDiv();
     ?>
 
     <h3>Stripboek zoeken</h3>
